@@ -6,6 +6,17 @@ ruby "3.1.4"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"
 
+# Gemfileに以下を追加
+gem 'devise'
+gem 'kaminari'
+gem 'rspec-rails'
+gem 'rubocop'
+gem 'activeadmin'
+gem 'capybara'
+gem 'faker'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
