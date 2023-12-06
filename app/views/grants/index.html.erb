@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>補助金検索ページ</title>
+</head>
+<body>
+    <h1>補助金検索ページ</h1>
+    
+    <form id="searchForm">
+        <label for="keyword">キーワード:</label>
+        <input type="text" id="keyword" name="keyword">
+        <button type="button" onclick="searchGrants()">検索</button>
+    </form>
+
+    <div id="searchResults"></div>
+
+    <script>
+        async function searchGrants() {
+            const keyword = document.getElementById('keyword').value;
+            const apiUrl = 'https://anypoint.mulesoft.com/mocking/api/v1/links';
+
+            // クエリパラメータを使用して検索する場合
+            const urlWithParams = `${apiUrl}?keyword=${encodeURIComponent(keyword)}`;
+
+            try {
+                // リクエストを送信
+                const response = await fetch(urlWithParams);
+                const data = await response.json();
+
+                // レスポンスデータを処理
+                displaySearchResults(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function displaySearchResults(results) {
+            const searchResultsDiv = document.getElementById('searchResults');
+            searchResultsDiv.innerHTML = ''; // 前回の結果をクリア
+
+            // レスポンスから結果を表示
+            results.links.forEach(result => {
+                const resultElement = document.createElement('div');
+                resultElement.textContent = result.title; // 実際のAPIレスポンスに基づいて適切なプロパティを指定
+                searchResultsDiv.appendChild(resultElement);
+            });
+        }
+    </script>
+</body>
+</html>
+

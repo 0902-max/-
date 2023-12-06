@@ -73,3 +73,17 @@ footer nav ul {
     margin-right: 50px; /* 適切なマージンを追加して適切な間隔を調整します */
   }
   
+  /* app/assets/stylesheets/application.css (or application.scss) */
+
+.question-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.options {
+  margin-top: 20px;
+}
+
+label {
+  margin-right: 10px;
+}

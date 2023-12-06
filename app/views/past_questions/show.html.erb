@@ -1,0 +1,43 @@
+<!-- app/views/past_questions/show.html.erb -->
+<div>
+  <h1 id="question-text"><%= @past_question.question_text %></h1>
+
+  <!-- 選択肢表示 -->
+  <ul>
+    <li><input type="radio" name="selected_option" value="A"> <%= @past_question.option_a %></li>
+    <li><input type="radio" name="selected_option" value="B"> <%= @past_question.option_b %></li>
+    <li><input type="radio" name="selected_option" value="C"> <%= @past_question.option_c %></li>
+    <li><input type="radio" name="selected_option" value="D"> <%= @past_question.option_d %></li>
+    <li><input type="radio" name="selected_option" value="E"> <%= @past_question.option_e %></li>
+  </ul>
+
+  <!-- 回答ボタン -->
+  <button onclick="submitAnswer()">回答する</button>
+
+  <!-- 結果表示 -->
+  <div id="result"></div>
+
+  <!-- 戻るボタン -->
+  <%= link_to '戻る', past_questions_path %>
+</div>
+
+<!-- JavaScript -->
+<script>
+  function submitAnswer() {
+    var selectedOption = document.querySelector('input[name="selected_option"]:checked');
+
+    if (selectedOption) {
+      var answer = selectedOption.value;
+
+      // 非同期で回答をサーバーに送信
+      fetch("<%= check_answer_past_question_path(@past_question) %>?answer=" + answer)
+        .then(response => response.json())
+        .then(data => {
+          // 結果を表示
+          document.getElementById('result').innerHTML = data.result;
+        });
+    } else {
+      alert("回答を選択してください");
+    }
+  }
+</script>
