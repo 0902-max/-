@@ -11,13 +11,23 @@
   </head>
 
   <body>
-  <nav>
-    <% if user_signed_in? %>
-      <!-- ログイン後のナビゲーションのリンクを表示 -->
-    <% else %>
-      <%= link_to '新規登録', new_user_registration_path %> |
-      <%= link_to 'ログイン', new_user_session_path %>
-    <% end %>
+    <header>
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </li>
+        <li>
+          <%= link_to "トップページ", top_index_path %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "新規登録", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_user_session_path %>
+        </li>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
