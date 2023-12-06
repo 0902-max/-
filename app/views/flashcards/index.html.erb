@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>単語帳</title>
+  <!-- 必要なスタイルシートやJavaScriptのリンクを追加 -->
+</head>
+<body>
+
+<div id="flashcards-container">
+  <h1>単語帳</h1>
+
+  <% if @vocabulary_notes.present? %>
+    <% @vocabulary_notes.each do |vocabulary_note| %>
+      <div class="vocabulary-note">
+        <h2><%= vocabulary_note.title %></h2>
+        <p><%= vocabulary_note.description %></p>
+
+        <!-- 単語帳内の単語一覧表示 -->
+        <% vocabulary_note.vocabulary_entries.each do |entry| %>
+          <div class="vocabulary-entry">
+            <strong><%= entry.word %></strong>:
+            <%= entry.meaning %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>まだ単語が登録されていません。</p>
+  <% end %>
+
+</body>
+</html>

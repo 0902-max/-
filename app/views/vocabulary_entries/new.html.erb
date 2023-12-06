@@ -1,0 +1,15 @@
+<h1>New Vocabulary Entry</h1>
+
+<%= form_with(model: [@vocabulary_note, @vocabulary_entry], url: vocabulary_note_vocabulary_entries_path(@vocabulary_note), method: :post) do |form| %>
+  <div>
+    <%= form.label :word, 'Word' %>
+    <%= form.text_field :word %>
+  </div>
+
+  <div>
+    <%= form.label :meaning, 'Meaning' %>
+    <%= form.text_area :meaning %>
+  </div>
+
+  <%= form.submit 'Create Entry' %>
+<% end %>
