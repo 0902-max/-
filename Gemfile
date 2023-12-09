@@ -16,6 +16,8 @@ gem 'capybara'
 gem 'faker'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'faraday'
+gem 'net-http'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
