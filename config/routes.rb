@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   get '/first_page', to: 'first_page#index', as: :first_page
+  get '/first_page/second_page', to: 'first_page#second_page', as: :second_page
+  get '/first_page/third_page', to: 'first_page#third_page', as: :third_page
   get 'top/index'
   authenticated :user do
     root 'top#index', as: :authenticated_root

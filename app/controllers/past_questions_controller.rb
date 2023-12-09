@@ -4,6 +4,7 @@ class PastQuestionsController < ApplicationController
 
   def index
     @past_questions = PastQuestion.all
+    @past_question = @past_questions.first
   end
 
   def show

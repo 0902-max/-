@@ -21,23 +21,3 @@
   <%= link_to '戻る', past_questions_path %>
 </div>
 
-<!-- JavaScript -->
-<script>
-  function submitAnswer() {
-    var selectedOption = document.querySelector('input[name="selected_option"]:checked');
-
-    if (selectedOption) {
-      var answer = selectedOption.value;
-
-      // 非同期で回答をサーバーに送信
-      fetch("<%= check_answer_past_question_path(@past_question) %>?answer=" + answer)
-        .then(response => response.json())
-        .then(data => {
-          // 結果を表示
-          document.getElementById('result').innerHTML = data.result;
-        });
-    } else {
-      alert("回答を選択してください");
-    }
-  }
-</script>
